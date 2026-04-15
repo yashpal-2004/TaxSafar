@@ -1,0 +1,15 @@
+# OS files
+.DS_Store
+Thumbs.db
+
+# IDEs
+.vscode/
+.idea/
+
+# Local configuration
+# config/db.php (Optional: if you want to keep sensitive creds out)
+
+# Backups/Temp
+*.bak
+*.tmp
+*.log

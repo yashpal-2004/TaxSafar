@@ -1,48 +1,76 @@
-# TaxPro CA Firm - Inquiry Management System
+# 💼 TaxPro - CA Firm Inquiry Management System
 
-A professional, modular web application for Chartered Accountants to showcase services and manage client inquiries efficiently. Built with pure PHP, MySQL, and Modern Vanilla CSS.
+A professional, modular web application designed for Chartered Accountants to showcase their services and manage client inquiries efficiently. This system features a high-performance landing page and a robust admin dashboard for inquiry tracking.
+
+---
+
+## Quick Start (Local Development)
+
+If you have PHP installed, you can run the project without a full web server:
+
+1.  **Clone the project** and navigate to the directory.
+2.  **Database Setup**: 
+    - Create a database named `ca_firm` in MySQL.
+    - Import `database/schema.sql`.
+3.  **Config**: Update `config/db.php` with your database credentials.
+4.  **Run Server**:
+    ```bash
+    php -S localhost:8000
+    ```
+5.  **Access**:
+    - **User Panel**: [http://localhost:8000/public/](http://localhost:8000/public/)
+    - **Admin Panel**: [http://localhost:8000/admin/login.php](http://localhost:8000/admin/login.php)
+    - **Credentials**: `admin@cafirm.com` / `Admin@123`
+
+---
 
 ## Features
-- **Modern Landing Page**: Fully responsive, single-page layout with smooth scrolling.
-- **Service Showcase**: Highlighting 6 core CA services with FontAwesome icons.
-- **Inquiry Management**: AJAX-enabled feel form with server-side validation.
-- **Admin Dashboard**: 
-  - Statistics overview (Total, New, Contacted, Closed).
-  - Search and filter inquiries by name/email or status.
-  - Full CRUD for inquiries (Read, Edit, Delete).
-  - Secure Login/Logout system with hashed passwords.
-- **Modular Code**: Clean separation of concerns (Config, Includes, Admin, Public).
 
-## Requirements
-- PHP 7.4 or higher
-- MySQL 5.7 or higher
-- Web Server (Apache/Nginx) - Compatible with XAMPP, WAMP, or LAMP.
+### Frontend (Client-Facing)
+- **Responsive Landing Page**: Sleek, modern design using Vanilla CSS.
+- **Service Showcase**: Grid layout highlighting 6 core CA services.
+- **AJAX Inquiry Form**: Instant inquiry submission with server-side validation.
+- **FontAwesome Integration**: Beautiful icons for a professional look.
 
-## Setup Instructions
-1. **Clone/Unzip**: Copy the `ca-firm` folder into your web server's root directory (e.g., `C:\xampp\htdocs\ca-firm`).
-2. **Database Setup**:
-   - Open PHPMyAdmin or your preferred SQL tool.
-   - Run the contents of `database/schema.sql`. This will create the `ca_firm` database and tables with sample data.
-3. **Configuration**:
-   - Open `config/db.php`.
-   - Update `DB_USER` and `DB_PASS` if they differ from your local environment defaults.
-4. **Access the Application**:
-   - **Frontend**: `http://localhost:8000/public/`
-   - **Admin Panel**: `http://localhost:8000/admin/login.php`
+### Admin Dashboard (Internal)
+- **Inquiry Management**: Complete CRUD operations for client requests.
+- **Smart Search & Filter**: 
+    - **Real-time Search**: Search by name, email, or mobile with debounce (500ms).
+    - **Status Filtering**: Filter by New, Contacted, or Closed statuses.
+- **Statistics Overview**: Dashboard cards showing inquiry volume and status distribution.
+- **Secure Authentication**: Session-based login with hashed password protection (`BCRYPT`).
+- **Activity Feedback**: Visual badges and success/error notifications.
 
-## Admin Credentials
-- **Email**: `admin@cafirm.com`
-- **Password**: `Admin@123`
+---
 
-## Folder Structure
-- `admin/`: Back-end management pages (Dashboard, Inquiry handling).
-- `config/`: Database connection using Singleton Pattern.
-- `database/`: SQL schema and sample data.
-- `includes/`: Shared logic, authentication helpers, and UI partials.
-- `public/`: Frontend assets, landing page, and form submission handler.
+## Tech Stack
 
-## Security
-- Prepared Statements (MySQLi) to prevent SQL Injection.
-- CSRF protection concepts through POST-only mutations.
-- Password hashing using `PASSWORD_BCRYPT`.
-- Input/Output sanitization via `htmlspecialchars`.
+- **Backend**: PHP 7.4+ (Modular Architecture)
+- **Database**: MySQL (Singleton Connection Pattern)
+- **Frontend**: HTML5, Vanilla CSS3, JavaScript (AJAX/Fetch)
+- **Icons**: FontAwesome 6.x
+- **Fonts**: Google Fonts (Inter/Outfit)
+- **Architecture**: Separated Concerns (Config/Admin/Public/Includes)
+
+---
+
+## Project Structure
+
+```text
+ca-firm/
+├── admin/            # Backend management pages (Dashboard, Inquiries)
+├── config/           # Database configuration (Singleton Pattern)
+├── database/         # SQL Schema and dummy data
+├── includes/         # Shared logic, auth helpers, and UI partials
+├── public/           # Frontend assets, landing page, and submission handlers
+└── README.md         # Project documentation
+```
+
+---
+
+## Security Measurements
+
+1.  **SQLi Protection**: All queries use **Prepared Statements** via MySQLi.
+2.  **Password Safety**: Passwords stored using `password_hash()` with `PASSWORD_BCRYPT`.
+3.  **XSS Prevention**: Output sanitization using `htmlspecialchars()` via a custom `sanitize()` helper.
+4.  **Session Security**: Server-side session validation for all admin routes.
