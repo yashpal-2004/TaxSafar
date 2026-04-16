@@ -1,4 +1,4 @@
-# 💼 TaxPro - CA Firm Inquiry Management System
+# TaxPro - CA Firm Inquiry Management System
 
 A professional, modular web application designed for Chartered Accountants to showcase their services and manage client inquiries efficiently. This system features a high-performance landing page and a robust admin dashboard for inquiry tracking.
 
