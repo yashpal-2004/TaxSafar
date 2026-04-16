@@ -49,20 +49,20 @@
         
         .content-area { padding: 2rem; }
         
-        /* Table styles */
+
         .table-card { background: #fff; border-radius: 12px; box-shadow: 0 4px 20px rgba(0,0,0,0.04); overflow: hidden; }
         table { width: 100%; border-collapse: collapse; }
         th, td { padding: 15px 20px; text-align: left; border-bottom: 1px solid #f1f5f9; }
         th { background: #f8fafc; font-weight: 600; color: #64748b; font-size: 0.85rem; text-transform: uppercase; }
         
-        /* Buttons */
+
         .btn { padding: 8px 16px; border-radius: 6px; cursor: pointer; text-decoration: none; font-size: 0.85rem; border: none; font-weight: 500; transition: 0.2s; display: inline-flex; align-items: center; gap: 5px; }
         .btn-primary { background: var(--primary); color: #fff; }
         .btn-accent { background: var(--accent); color: #fff; }
         .btn-danger { background: #ef4444; color: #fff; }
         .btn:hover { opacity: 0.9; }
 
-        /* Flash messages */
+
         .alert { padding: 15px 20px; border-radius: 8px; margin-bottom: 20px; font-weight: 500; }
         .alert-success { background: #dcfce7; color: #166534; border-left: 5px solid #22c55e; }
         .alert-error { background: #fee2e2; color: #991b1b; border-left: 5px solid #ef4444; }

@@ -2,7 +2,7 @@
         </div>
     </main>
     <script>
-        // Automatic fade out for alerts
+
         setTimeout(() => {
             document.querySelectorAll('.alert').forEach(el => {
                 el.style.transition = 'opacity 0.5s';

@@ -1,8 +1,6 @@
 <?php declare(strict_types=1);
 
-/**
- * Check if the user is logged in, redirect if not
- */
+
 function requireLogin(): void {
     if (session_status() === PHP_SESSION_NONE) session_start();
     if (!isLoggedIn()) {
@@ -11,16 +9,12 @@ function requireLogin(): void {
     }
 }
 
-/**
- * Return login status
- */
+
 function isLoggedIn(): bool {
     return isset($_SESSION['admin_id']);
 }
 
-/**
- * Attempt to login an admin
- */
+
 function loginAdmin(mysqli $mysqli, string $email, string $password): bool {
     $stmt = $mysqli->prepare("SELECT id, name, password FROM admins WHERE email = ? LIMIT 1");
     $stmt->bind_param("s", $email);
@@ -40,9 +34,7 @@ function loginAdmin(mysqli $mysqli, string $email, string $password): bool {
     return false;
 }
 
-/**
- * Destroy admin session
- */
+
 function logoutAdmin(): void {
     if (session_status() === PHP_SESSION_NONE) session_start();
     session_unset();

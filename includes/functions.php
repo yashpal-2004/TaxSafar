@@ -1,15 +1,11 @@
 <?php declare(strict_types=1);
 
-/**
- * Sanitize input to prevent XSS
- */
+
 function sanitize($input) {
     return htmlspecialchars(trim((string)$input), ENT_QUOTES, 'UTF-8');
 }
 
-/**
- * Validate Inquiry Form Data
- */
+
 function validateInquiryForm(array $data): array {
     $errors = [];
     
@@ -26,31 +22,23 @@ function validateInquiryForm(array $data): array {
     return $errors;
 }
 
-/**
- * Validate Email Format
- */
+
 function validateEmail(string $email): bool {
     return (bool) filter_var($email, FILTER_VALIDATE_EMAIL);
 }
 
-/**
- * Validate 10-digit Indian Mobile Number
- */
+
 function validateMobile(string $mobile): bool {
     return (bool) preg_match('/^[6-9]\d{9}$/', $mobile);
 }
 
-/**
- * Set Flash Message
- */
+
 function setFlash(string $type, string $message): void {
     if (session_status() === PHP_SESSION_NONE) session_start();
     $_SESSION['flash'] = ['type' => $type, 'message' => $message];
 }
 
-/**
- * Get and Unset Flash Message
- */
+
 function getFlash(): ?array {
     if (session_status() === PHP_SESSION_NONE) session_start();
     if (isset($_SESSION['flash'])) {
@@ -61,16 +49,12 @@ function getFlash(): ?array {
     return null;
 }
 
-/**
- * Format Date to "15 Apr 2025, 10:30 AM"
- */
+
 function formatDate(string $datetime): string {
     return date("d M Y, h:i A", strtotime($datetime));
 }
 
-/**
- * Get Status Badge HTML
- */
+
 function getStatusBadge(string $status): string {
     $colors = [
         'new' => ['bg' => '#fde6d2', 'text' => '#9a3412', 'label' => 'New'],

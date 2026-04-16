@@ -9,7 +9,7 @@ requireLogin();
 $id = (int)($_GET['id'] ?? 0);
 if (!$id) { header("Location: inquiries.php"); exit(); }
 
-// Fetch data for confirmation
+
 $stmt = $mysqli->prepare("SELECT full_name FROM inquiries WHERE id = ?");
 $stmt->bind_param("i", $id);
 $stmt->execute();

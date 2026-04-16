@@ -6,7 +6,7 @@ require_once __DIR__ . '/../includes/functions.php';
 
 requireLogin();
 
-// Fetch statistics
+
 $stats = ['total' => 0, 'new' => 0, 'contacted' => 0, 'closed' => 0];
 
 $query = "SELECT status, COUNT(*) as count FROM inquiries GROUP BY status";
@@ -16,7 +16,7 @@ while($row = $res->fetch_assoc()) {
 }
 $stats['total'] = array_sum($stats);
 
-// Fetch recent 5 inquiries
+
 $recent_stmt = $mysqli->prepare("SELECT id, full_name, email, service, status, created_at FROM inquiries ORDER BY created_at DESC LIMIT 5");
 $recent_stmt->execute();
 $recent_result = $recent_stmt->get_result();

@@ -12,7 +12,7 @@ $page = (int)($_GET['page'] ?? 1);
 $limit = 10;
 $offset = ($page - 1) * $limit;
 
-// Base query parts
+
 $where = " WHERE 1=1";
 $params = [];
 $types = "";
@@ -32,7 +32,7 @@ if ($status_filter !== 'all') {
     $types .= "s";
 }
 
-// Count total for pagination
+
 $count_query = "SELECT COUNT(*) as total FROM inquiries" . $where;
 $count_stmt = $mysqli->prepare($count_query);
 if (!empty($params)) {
@@ -43,11 +43,11 @@ $total_records = $count_stmt->get_result()->fetch_assoc()['total'];
 $total_pages = ceil($total_records / $limit);
 $count_stmt->close();
 
-// Fetch results with pagination
+
 $select_query = "SELECT * FROM inquiries" . $where . " ORDER BY created_at DESC LIMIT ? OFFSET ?";
 $stmt = $mysqli->prepare($select_query);
 
-// Combine filter params with limit and offset
+
 $final_params = $params;
 $final_params[] = $limit;
 $final_params[] = $offset;
@@ -118,7 +118,7 @@ require_once __DIR__ . '/../includes/header.php';
     </table>
 </div>
 
-<!-- Pagination -->
+
 <?php if ($total_pages > 1): ?>
 <div style="display: flex; justify-content: center; gap: 5px; margin-top: 30px;">
     <?php for($i = 1; $i <= $total_pages; $i++): ?>
@@ -140,7 +140,7 @@ $stmt->close();
 
     let timeout = null;
 
-    // Auto-submit search after typing (with debounce)
+
     searchInput.addEventListener('input', () => {
         clearTimeout(timeout);
         timeout = setTimeout(() => {
@@ -148,12 +148,12 @@ $stmt->close();
         }, 500);
     });
 
-    // Auto-submit status on change
+
     statusSelect.addEventListener('change', () => {
         filterForm.submit();
     });
 
-    // Keep cursor at end of input on auto-submit
+
     if (searchInput.value) {
         searchInput.focus();
         searchInput.setSelectionRange(searchInput.value.length, searchInput.value.length);

@@ -9,7 +9,7 @@ requireLogin();
 $id = (int)($_GET['id'] ?? 0);
 if (!$id) { header("Location: inquiries.php"); exit(); }
 
-// Fetch current data
+
 $stmt = $mysqli->prepare("SELECT * FROM inquiries WHERE id = ?");
 $stmt->bind_param("i", $id);
 $stmt->execute();
@@ -18,7 +18,7 @@ $stmt->close();
 
 if (!$inquiry) { header("Location: inquiries.php"); exit(); }
 
-// Update logic
+
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $status = $_POST['status'] ?? $inquiry['status'];
     $city = $_POST['city'] ?? $inquiry['city'];
